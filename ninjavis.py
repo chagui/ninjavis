@@ -1,8 +1,6 @@
-"""
-Generate visualization of a ninja build from its logs.
-
-Copyright (c) 2019 Guilhem C.
-"""
+# -*- coding: utf-8 -*-
+"""Generate visualization of a ninja build from its logs."""
+# :copyright: (c) 2019 Guilhem Charles. All rights reserved.
 #!/usr/bin/env python3.7
 import argparse
 from dataclasses import dataclass
