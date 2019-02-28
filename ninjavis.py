@@ -8,7 +8,7 @@ import argparse
 from dataclasses import dataclass
 import re
 import sys
-from typing import List
+from typing import List, Optional
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
@@ -63,7 +63,7 @@ def generate_build_profile(logfile: str) -> List[BuildItem]:
     return profile
 
 
-def generate_timeline_from(profile: List[BuildItem], output: str, title: str):
+def generate_timeline_from(profile: List[BuildItem], output: str, title: Optional[str]):
     """
     Generate a visjs timeline from the ninja build profile.
 
@@ -72,7 +72,7 @@ def generate_timeline_from(profile: List[BuildItem], output: str, title: str):
     :param title: Title of the visualization.
     :return:
     """
-    if title is None:
+    if not title:
         title = 'Ninja build'
 
     try:
