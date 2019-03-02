@@ -22,10 +22,10 @@ class BuildItem:
     """
     Represents an item of the build. Match a line of the log file.
     """
-    __slots__ = ['name', 'start_time', 'end_time']
     name: str
     start_time: int
     end_time: int
+    __slots__ = ['name', 'start_time', 'end_time']
 
 
 def generate_build_profile(logfile: str) -> List[BuildItem]:
