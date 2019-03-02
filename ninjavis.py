@@ -1,12 +1,13 @@
-# -*- coding: utf-8 -*-
-"""Generate visualization of a ninja build from its logs."""
-# :copyright: (c) 2019 Guilhem Charles. All rights reserved.
 #!/usr/bin/env python3.7
-import argparse
+# -*- coding: utf-8 -*-
+# :copyright: (c) 2019 Guilhem Charles. All rights reserved.
+"""Generate visualization of a ninja build from its logs."""
+
 from dataclasses import dataclass
+from typing import List, Optional
+import argparse
 import re
 import sys
-from typing import List, Optional
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
