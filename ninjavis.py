@@ -5,6 +5,7 @@
 
 from dataclasses import dataclass
 from typing import List, Optional
+from os.path import getmtime
 import argparse
 import re
 import sys
@@ -28,20 +29,21 @@ class BuildItem:
     __slots__ = ['name', 'start_time', 'end_time']
 
 
-def generate_build_profile(logfile: str) -> List[BuildItem]:
+def generate_build_profile(logfile: str, time_offset: float) -> List[BuildItem]:
     """
     Parse a ninja build log file and generates a profile. A profile consist of the list of item
     part of the build.
 
     :param logfile: Path to the build log file.
+    :param time_offset: Start time of the visualization.
     :return: Profile of the build.
     """
-    def parse_and_append(profile: List[BuildItem], line: str):
+    def parse_build_entry(line: str):
         try:
             # ignore comments
             if line[:1] != '#':
                 start_time, end_time, _, command, _ = line.split()
-                profile.append(BuildItem(command, start_time, end_time))
+                return BuildItem(command, int(start_time) + time_offset, int(end_time) + time_offset)
         except ValueError:
             print(f'error: could not parse {line}', file=sys.stderr)
 
@@ -54,10 +56,14 @@ def generate_build_profile(logfile: str) -> List[BuildItem]:
             if int(log_version.group(1)) != 5:
                 raise RuntimeError(f'unsupported log file version: {log_version}')
         else:
-            parse_and_append(profile, header)
+            parsed_project = parse_build_entry(header)
+            if parsed_project:
+                profile.append(parsed_project)
 
         for line in build_log:
-            parse_and_append(profile, line)
+            parsed_project = parse_build_entry(line)
+            if parsed_project:
+                profile.append(parsed_project)
 
     return profile
 
@@ -107,7 +113,7 @@ def main():
     args = get_argparser().parse_args(sys.argv[1:])
 
     try:
-        profile = generate_build_profile(args.logfile)
+        profile = generate_build_profile(args.logfile, getmtime(args.logfile))
         generate_timeline_from(profile, args.output, args.title)
     except (RuntimeError, FileNotFoundError) as err:
         print(err, file=sys.stderr)
