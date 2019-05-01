@@ -6,6 +6,7 @@
 from dataclasses import dataclass
 from typing import List, Optional
 from os.path import getmtime
+
 import argparse
 import re
 import sys
@@ -38,14 +39,16 @@ def generate_build_profile(logfile: str, time_offset: float) -> List[BuildItem]:
     :param time_offset: Start time of the visualization.
     :return: Profile of the build.
     """
-    def parse_build_entry(line: str):
+    def parse_build_entry(line: str) -> Optional[BuildItem]:
         try:
             # ignore comments
             if line[:1] != '#':
                 start_time, end_time, _, command, _ = line.split()
-                return BuildItem(command, int(start_time) + time_offset, int(end_time) + time_offset)
+                return BuildItem(command, int(start_time) + time_offset,
+                                 int(end_time) + time_offset)
         except ValueError:
             print(f'error: could not parse {line}', file=sys.stderr)
+        return None
 
     profile = []
     with open(logfile, 'r') as build_log:
