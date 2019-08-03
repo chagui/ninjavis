@@ -1,0 +1,6 @@
+docs/
+.gitignore
+.travis.yml
+Dockerfile
+LICENSE
+README.md

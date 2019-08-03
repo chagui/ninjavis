@@ -3,13 +3,12 @@
 # :copyright: (c) 2019 Guilhem Charles. All rights reserved.
 """Generate visualization of a ninja build from its logs."""
 
-from dataclasses import dataclass
-from typing import List, Optional
-from os.path import getmtime
-
 import argparse
 import re
 import sys
+from dataclasses import dataclass
+from os.path import getmtime
+from typing import List, Optional
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
@@ -19,7 +18,7 @@ JINJA_ENV = Environment(
 )
 
 
-@dataclass
+@dataclass(frozen=True)
 class BuildItem:
     """
     Represents an item of the build. Match a line of the log file.
@@ -52,26 +51,23 @@ def generate_build_profile(logfile: str, time_offset: float) -> List[BuildItem]:
 
     profile = []
     with open(logfile, 'r') as build_log:
-        # we expect the line to specify ninja build log version
+        # first line might be a header specifying ninja build log version
         header = build_log.readline()
         log_version = re.search(r'# ninja log v(\d+)', header)
         if log_version:
             if int(log_version.group(1)) != 5:
                 raise RuntimeError(f'unsupported log file version: {log_version}')
         else:
+            # header is a log entry
             parsed_project = parse_build_entry(header)
             if parsed_project:
-                profile.append(parsed_project)
-
-        for line in build_log:
-            parsed_project = parse_build_entry(line)
-            if parsed_project:
-                profile.append(parsed_project)
-
-    return profile
+                profile = [parsed_project]
+        # handle remaining lines, filter out entries that could not be parsed
+        profile.extend(filter(None, [parse_build_entry(line) for line in build_log]))
+        return profile
 
 
-def generate_timeline_from(profile: List[BuildItem], output: str, title: Optional[str]):
+def generate_timeline_from(profile: List[BuildItem], output: str, title: str = 'Ninja build'):
     """
     Generate a visjs timeline from the ninja build profile.
 
@@ -80,9 +76,6 @@ def generate_timeline_from(profile: List[BuildItem], output: str, title: Optiona
     :param title: Title of the visualization.
     :return:
     """
-    if not title:
-        title = 'Ninja build'
-
     try:
         visualization_skel = JINJA_ENV.get_template('timeline.html')
         with open(output, 'w') as visualization:
