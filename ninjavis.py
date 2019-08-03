@@ -63,7 +63,7 @@ def generate_build_profile(logfile: str, time_offset: float) -> List[BuildItem]:
             if parsed_project:
                 profile = [parsed_project]
         # handle remaining lines, filter out entries that could not be parsed
-        profile.extend(filter(None, [parse_build_entry(line) for line in build_log]))
+        profile.extend(filter(None, (parse_build_entry(line) for line in build_log)))
         return profile
 
 
