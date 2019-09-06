@@ -8,7 +8,7 @@ Inspired by [buildbloat](https://github.com/nico/buildbloat).
 
 ## Usage ##
 ```bash
-usage: ninjavis --title "my build" ninja_build.log uild_profile.html
+usage: ninjavis --title "my build" ninja_build.log build_profile.html
 ```
 :warning: Run ``ninja -t recompact`` first ot make sure that no duplicate entries are in the build log.
 
