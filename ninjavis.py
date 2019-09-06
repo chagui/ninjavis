@@ -29,7 +29,7 @@ class BuildItem:
     __slots__ = ['name', 'start_time', 'end_time']
 
 
-def generate_build_profile(logfile: str, time_offset: float) -> List[BuildItem]:
+def generate_build_profile(logfile: str, time_offset: int) -> List[BuildItem]:
     """
     Parse a ninja build log file and generates a profile. A profile consist of the list of item
     part of the build.
@@ -49,7 +49,7 @@ def generate_build_profile(logfile: str, time_offset: float) -> List[BuildItem]:
             print(f'error: could not parse {line}', file=sys.stderr)
         return None
 
-    profile = []
+    profile: List[BuildItem] = []
     with open(logfile, 'r') as build_log:
         # first line might be a header specifying ninja build log version
         header = build_log.readline()
@@ -109,7 +109,7 @@ def main():
     args = get_argparser().parse_args(sys.argv[1:])
 
     try:
-        profile = generate_build_profile(args.logfile, getmtime(args.logfile))
+        profile = generate_build_profile(args.logfile, int(getmtime(args.logfile)))
         generate_timeline_from(profile, args.output, args.title)
     except (RuntimeError, FileNotFoundError) as err:
         print(err, file=sys.stderr)
