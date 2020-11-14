@@ -12,6 +12,8 @@ python = "^3.8"
 Jinja2 = "~=2.10"
 
 [tool.poetry.dev-dependencies]
+pylint = "^2.6"
+mypy = "^0.790"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

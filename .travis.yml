@@ -2,8 +2,10 @@ dist: xenial # required for Python >= 3.7
 language: python
 python:
   - "3.8"
+before_install:
+  - pip install poetry
 install:
-  - pip install -r requirements.txt --upgrade pylint mypy
+  - poetry install -v
 script:
-  - pylint ninjavis.py
-  - mypy ninjavis.py
+  - poetry run pylint ninjavis.py
+  - poetry run mypy ninjavis.py
