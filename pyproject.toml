@@ -15,6 +15,9 @@ Jinja2 = "~=2.10"
 pylint = "^2.6"
 mypy = "^0.790"
 
+[tool.poetry.scripts]
+ninjavis = "ninjavis:main"
+
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
