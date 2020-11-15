@@ -1,7 +1,9 @@
-dist: xenial # required for Python >= 3.7
+dist: xenial
 language: python
+
 python:
-  - "3.8"
+  - '3.8'
+
 before_install:
   - pip install poetry
 install:
@@ -9,3 +11,16 @@ install:
 script:
   - poetry run pylint ninjavis.py
   - poetry run mypy ninjavis.py
+
+deploy:
+  provider: script
+  script: poetry publish --build
+  skip_existing: true
+  on:
+    tags: true
+    branch: main
+
+global:
+  env:
+    secure: XPTn8eDQ1O5Rz4uSC5TlbSeFxeOR8IO2edy6KlERIpQCsZoNOeMRth1QNJdg1cHgnNjEl85x43yUz3G/f35PCHFMr3RELR+RbH1qBgPgGAJyJqUHLjcUEJcv2OwinRSvdLNTlgJg/HlWjE+01Ie3VuXTc71kWvRZ4f6s3tgnqXWoK/Fj3JsOWEcYaRC5sXt0oyhKrbz/w+m/2RP2bohsoKVlKXSH2kk9FtgilgN2njrW3Ge6bSpAeTnG3g+G/V4hRwYEUlZTIU75IWt4/3ZJtMk5IWgQ4tjivE7x7hfF0TKHDgMnOSQLC/KsRdg7Mr+U5VDlTrF/CTNiLJHefZVGlMWyEHXEFpK/DOzLCG2RWXIVODftdl0XMefypF0/XSdMHXP+yH50hSUi9+o8i3ykVYgPzgGZ/+K10WXxR5JmAUDwHtxQhTSrahVxalxZKrhIZ5Vf0/d8r7Ph+y3hfW39HTNLC0c3qM4/jMJWxHsU0NZ9IK/KrNSonGvwsbPyohAG+Vib50RG+6AaZzlPwEUsDReS5HdJViK42Je95j3uvEKt5zUZAHLUnaPo4aVh4EaRmQeLNxF12oxYCH0OdlMNb0STNfb5FoOpZZYwwmil/08Rnu9+RiTMcDMRqDp/EfSbbj8QFddSGcrIeNA/L05GXXIO+q895mwjwMotuVJ6mt4=
+
