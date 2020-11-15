@@ -1,4 +1,6 @@
 # ninjavis #
+[![Build Status](https://travis-ci.org/chagui/ninjavis.png)](https://travis-ci.org/chagui/ninjavis)
+
 ## Introduction ##
 Generate visualization from [Ninja](https://github.com/ninja-build/ninja) build logs. Ninjavis parse the ninja build
 logs and for each item of the build extract its target, starting and end time.
