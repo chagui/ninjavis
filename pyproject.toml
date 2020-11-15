@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "ninjavis"
+version = "0.1.0"
+description = "Generate visualization from Ninja build logs."
+authors = ["Guilhem Charles"]
+readme = "README.md"
+homepage = "https://github.com/chagui/ninjavis"
+repository = "https://github.com/chagui/ninjavis"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+Jinja2 = "~=2.10"
+
+[tool.poetry.dev-dependencies]
+pylint = "^2.6"
+mypy = "^0.790"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+

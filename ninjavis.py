@@ -1,6 +1,6 @@
-#!/usr/bin/env python3.7
+#!/usr/bin/env python3.8
 # -*- coding: utf-8 -*-
-# :copyright: (c) 2019 Guilhem Charles. All rights reserved.
+# :copyright: (c) 2019-2020 Guilhem Charles. All rights reserved.
 """Generate visualization of a ninja build from its logs."""
 
 import argparse
