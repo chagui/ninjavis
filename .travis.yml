@@ -1,17 +1,14 @@
 dist: xenial
 language: python
-
 python:
-  - '3.8'
-
+- '3.8'
 before_install:
-  - pip install poetry
+- pip install poetry
 install:
-  - poetry install -v
+- poetry install -v
 script:
-  - poetry run pylint ninjavis.py
-  - poetry run mypy ninjavis.py
-
+- poetry run pylint ninjavis.py
+- poetry run mypy ninjavis.py
 deploy:
   provider: script
   script: poetry publish --build
@@ -19,8 +16,6 @@ deploy:
   on:
     tags: true
     branch: main
-
-global:
-  env:
-    secure: XPTn8eDQ1O5Rz4uSC5TlbSeFxeOR8IO2edy6KlERIpQCsZoNOeMRth1QNJdg1cHgnNjEl85x43yUz3G/f35PCHFMr3RELR+RbH1qBgPgGAJyJqUHLjcUEJcv2OwinRSvdLNTlgJg/HlWjE+01Ie3VuXTc71kWvRZ4f6s3tgnqXWoK/Fj3JsOWEcYaRC5sXt0oyhKrbz/w+m/2RP2bohsoKVlKXSH2kk9FtgilgN2njrW3Ge6bSpAeTnG3g+G/V4hRwYEUlZTIU75IWt4/3ZJtMk5IWgQ4tjivE7x7hfF0TKHDgMnOSQLC/KsRdg7Mr+U5VDlTrF/CTNiLJHefZVGlMWyEHXEFpK/DOzLCG2RWXIVODftdl0XMefypF0/XSdMHXP+yH50hSUi9+o8i3ykVYgPzgGZ/+K10WXxR5JmAUDwHtxQhTSrahVxalxZKrhIZ5Vf0/d8r7Ph+y3hfW39HTNLC0c3qM4/jMJWxHsU0NZ9IK/KrNSonGvwsbPyohAG+Vib50RG+6AaZzlPwEUsDReS5HdJViK42Je95j3uvEKt5zUZAHLUnaPo4aVh4EaRmQeLNxF12oxYCH0OdlMNb0STNfb5FoOpZZYwwmil/08Rnu9+RiTMcDMRqDp/EfSbbj8QFddSGcrIeNA/L05GXXIO+q895mwjwMotuVJ6mt4=
-
+env:
+  global:
+  - secure: mYX813z6kURtqP6DrR19khqkFeqxcXz8o7jqCS5Weecw2VuHdlSO4P0QGJD3KwqDXsOtx4TftE2D1cevcTu4UrZijJVmFZKZOYGxuYyCzjy2E4CfXw5HsQmahGDmpud4hPZlMLCK9lgT1Bif7YEGG7w0i/4YhBUYNyLUageKTTTpuCNgcSx+IfczDqoDNSLgmrYcnm/c6VFVa8M9AEpY5MAvHZILrz/JPY/+h68O2G8mkDFW1DNBth9Sfh/214TSUyscivl8IB5mo6YHYB0U7f4nmR3zY0YlWYL5Rls7nPfN6jyBYYowiICm1OSGVtcUlQyzy4hFMfqMUkLPrh+E7aSxOgze0dW0UC8WbPUFb6gSRSAjuKIwY8gpECouGWvdBl8Mp7+9aZtN8OVT3jAg+FpxL6VyqNgPahhW8KuAFxn3qbKr4Jwp0oHx3s+RTEnQKbSLB2qg3OErS1uCOaSM+T5i5tVFJ7+IwbWLYjgmkJpL0NybRTopj+g/Plf4UjyJpFVDiyzpFCl/TDV1ofLxi5SIvfbyc5EiMoBNhyhIyIwvxHJgvrDbvAuK2p5lINax28c0LJoFAkqfDr7PokaSLy93Bnl/plUlN3a7PCAMVZCHEKX3rmsnGCR4yt1tncrFiRqeDaFXGRoN0g+GGkbBW34ZwGQoOIuidJ2cjiLhYic=
