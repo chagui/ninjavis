@@ -1,5 +1,6 @@
 # ninjavis #
 [![Build Status](https://travis-ci.org/chagui/ninjavis.png)](https://travis-ci.org/chagui/ninjavis)
+[![PyPI version](https://badge.fury.io/py/ninjavis.svg)](https://badge.fury.io/py/ninjavis)
 
 ## Introduction ##
 Generate visualization from [Ninja](https://github.com/ninja-build/ninja) build logs. Ninjavis parse the ninja build
