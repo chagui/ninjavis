@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ninjavis"
-version = "0.1.1"
+version = "0.1.2"
 description = "Generate visualization from Ninja build logs."
 authors = ["Guilhem Charles"]
 readme = "README.md"
@@ -9,7 +9,7 @@ homepage = "https://github.com/chagui/ninjavis"
 repository = "https://github.com/chagui/ninjavis"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.7"
 Jinja2 = "~=2.10"
 
 [tool.poetry.dev-dependencies]
