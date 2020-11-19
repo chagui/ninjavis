@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.8
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # :copyright: (c) 2019-2020 Guilhem Charles. All rights reserved.
 """Generate visualization of a ninja build from its logs."""
@@ -7,13 +7,13 @@ import argparse
 import re
 import sys
 from dataclasses import dataclass
-from os.path import getmtime
+from os.path import dirname, getmtime, join, realpath
 from typing import List, Optional
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 JINJA_ENV = Environment(
-    loader=FileSystemLoader('templates'),
+    loader=FileSystemLoader(join(dirname(realpath(__file__)))),
     autoescape=select_autoescape(['html'])
 )
 
@@ -115,7 +115,3 @@ def main():
         print(err, file=sys.stderr)
         sys.exit(1)
     sys.exit(0)
-
-
-if __name__ == '__main__':
-    main()
