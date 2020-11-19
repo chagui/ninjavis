@@ -1,16 +1,14 @@
 dist: xenial
 language: python
 python:
-- '3.7'
-- '3.8'
-- '3.9'
+- '3.5'
 before_install:
 - pip install poetry
 install:
 - poetry install -v
 script:
-- poetry run pylint ninjavis
-- poetry run mypy ninjavis
+- poetry run pylint ninjavis.py
+- poetry run mypy ninjavis.py
 deploy:
   provider: script
   script: poetry publish --build
