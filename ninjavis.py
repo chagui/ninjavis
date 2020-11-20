@@ -64,7 +64,7 @@ def generate_build_profile(logfile: str, time_offset: int) -> List[dict]:
                     end=int(end_time) + time_offset,
                 )
         except ValueError:
-            print("error: could not parse " + line, file=sys.stderr)
+            print(f"error: could not parse {line}", file=sys.stderr)
         return None
 
     profile = []
@@ -75,7 +75,7 @@ def generate_build_profile(logfile: str, time_offset: int) -> List[dict]:
         if log_version:
             parsed_version = log_version.group(1)
             if int(parsed_version) != 5:
-                raise RuntimeError("unsupported log file version: " + parsed_version)
+                raise RuntimeError(f"unsupported log file version: {parsed_version}")
         else:
             # header is a log entry
             parsed_project = parse_build_entry(header)
@@ -99,7 +99,7 @@ def generate_timeline_from(profile: List[dict], output: str, title: str):
         with open(output, "w") as visualization:
             visualization.write(TIMELINE.format(title=title, dataset=profile))
     except RuntimeError as exc:
-        print("error: could not generate timeline: " + str(exc), file=sys.stderr)
+        print(f"error: could not generate timeline: {exc}", file=sys.stderr)
         sys.exit(1)
 
 
