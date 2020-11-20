@@ -1,10 +1,4 @@
-FROM python:3.7.2-alpine
+FROM python:3.6
+RUN pip install ninjavis
+ENTRYPOINT ["ninjavis"]
 
-ENTRYPOINT ["python", "ninjavis.py"]
-WORKDIR /home
-
-COPY requirements.txt /tmp/
-RUN pip install --upgrade pip -r /tmp/requirements.txt
-
-COPY ninjavis.py .
-COPY templates templates/
