@@ -1,6 +1,9 @@
 # ninjavis #
-[![Build Status](https://travis-ci.org/chagui/ninjavis.png)](https://travis-ci.org/chagui/ninjavis)
-[![PyPI version](https://badge.fury.io/py/ninjavis.svg)](https://badge.fury.io/py/ninjavis)
+[![build](https://travis-ci.org/chagui/ninjavis.png)](https://travis-ci.org/chagui/ninjavis)
+[![version](https://pypip.in/v/ninjavis/badge.png?style=flat)](https://pypi.python.org/pypi/ninjavis)
+[![format](https://pypip.in/format/ninjavis/badge.png?style=flat)](https://pythonwheels.com/)
+[![license](https://pypip.in/license/ninjavis/badge.png?style=flat)](https://pypi.python.org/pypi/ninjavis)
+
 
 ## Introduction ##
 Generate visualization from [Ninja](https://github.com/ninja-build/ninja) build logs. Ninjavis parse the ninja build
@@ -18,3 +21,5 @@ usage: ninjavis --title "my build" ninja_build.log build_profile.html
 ## Example ##
 Profile of Ninja 1.8.2 build
 ![Ninja 1.8.2 build profile](https://raw.githubusercontent.com/chagui/ninjavis/main/docs/example-ninja_build_1.8.2.png)
+
+
