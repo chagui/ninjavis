@@ -16,10 +16,8 @@ Inspired by [buildbloat](https://github.com/nico/buildbloat).
 ```bash
 usage: ninjavis --title "my build" ninja_build.log build_profile.html
 ```
-:warning: Run ``ninja -t recompact`` first ot make sure that no duplicate entries are in the build log.
+:warning: Run ``ninja -t recompact`` first to make sure that no duplicate entries are in the build log.
 
 ## Example ##
 Profile of Ninja 1.8.2 build
 ![Ninja 1.8.2 build profile](https://raw.githubusercontent.com/chagui/ninjavis/main/docs/example-ninja_build_1.8.2.png)
-
-
