@@ -11,3 +11,8 @@ repos:
       - id: mixed-line-ending
       - id: trailing-whitespace
 
+  - repo: https://github.com/ambv/black
+    rev: 21.8b0
+    hooks:
+      - id: black
+
