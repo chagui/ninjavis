@@ -111,8 +111,7 @@ def get_argparser() -> argparse.ArgumentParser:
     """
     parser = argparse.ArgumentParser(
         prog="ninjavis",
-        description="Parse ninja build log file and "
-        "generates a timeline of the build",
+        description="Parse ninja build log file and " "generates a timeline of the build",
     )
     parser.add_argument("logfile", help="Ninja build log (.ninja_log)")
     parser.add_argument("output", help="Output file for the visualization")
