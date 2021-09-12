@@ -58,11 +58,11 @@ def generate_build_profile(logfile: str, time_offset: int) -> List[dict]:
             # ignore comments
             if line[:1] != "#":
                 start_time, end_time, _, command, _ = line.split()
-                return dict(
-                    content=command,
-                    start=int(start_time) + time_offset,
-                    end=int(end_time) + time_offset,
-                )
+                return {
+                    "content": command,
+                    "start": int(start_time) + time_offset,
+                    "end": int(end_time) + time_offset,
+                }
         except ValueError:
             print(f"error: could not parse {line}", file=sys.stderr)
         return None
