@@ -32,3 +32,12 @@ line-length = 120
 target-version = ["py36", "py37", "py38", "py39"]
 include = '\.pyi?$'
 
+[tool.isort]
+balanced_wrapping = true
+combine_as_imports = true
+indent = "    "
+lexicographical = true
+multi_line_output = 3
+order_by_type = false
+profile = "black"
+
