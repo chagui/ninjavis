@@ -9,15 +9,15 @@ homepage = "https://github.com/chagui/ninjavis"
 repository = "https://github.com/chagui/ninjavis"
 
 [tool.poetry.dependencies]
-python = "^3.7.15"
+python = "^3.12"
 
 [tool.poetry.dev-dependencies]
-pylint = "^2.6"
-mypy = "^0.982"
-black = "^22.10"
-isort = "^5.9.3"
-flake8 = "^5.0.4"
-flake8-bugbear = "^22.9.23"
+pylint = "^3.1"
+mypy = "^1.10"
+black = "^24.4"
+isort = "^5.13"
+flake8 = "7.0"
+flake8-bugbear = "^24.4"
 flake8-comprehensions = "^3.10.0"
 
 [tool.poetry.scripts]
