@@ -22,3 +22,18 @@ usage: ninjavis --title "my build" ninja_build.log build_profile.html
 Profile of Ninja 1.8.2 build
 ![Ninja 1.8.2 build profile](https://raw.githubusercontent.com/chagui/ninjavis/main/docs/example-ninja_build_1.8.2.png)
 
+
+Output HAR?
+https://en.wikipedia.org/wiki/HAR_(file_format)
+
+https://github.com/firefox-devtools/profiler
+
+
+https://github.com/nico/ninjatracing
+https://www.speedscope.app/
+https://ui.perfetto.dev/
+
+
+
+https://github.com/google/pybadges
+
