@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 # :copyright: (c) 2019-2020 Guilhem Charles. All rights reserved.
 """Generate visualization of a ninja build from its logs."""
+
 import argparse
 import re
 import sys
@@ -68,7 +68,7 @@ def generate_build_profile(logfile: str, time_offset: int) -> List[dict]:
         return None
 
     profile = []
-    with open(logfile, "r") as build_log:
+    with open(logfile) as build_log:
         # first line might be a header specifying ninja build log version
         header = build_log.readline()
         log_version = re.search(r"# ninja log v(\d+)", header)

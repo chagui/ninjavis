@@ -7,18 +7,16 @@ repos:
       - id: check-merge-conflict
       - id: check-toml
       - id: check-yaml
-      - id: fix-encoding-pragma
       - id: mixed-line-ending
       - id: trailing-whitespace
 
   - repo: https://github.com/ambv/black
-    rev: 25.1.0
+    rev: 26.1.0
     hooks:
       - id: black
 
-
   - repo: https://github.com/pycqa/isort
-    rev: 6.0.1
+    rev: 7.0.0
     hooks:
       - id: isort
         name: isort
@@ -30,7 +28,12 @@ repos:
         additional_dependencies: [flake8-bugbear, flake8-comprehensions]
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.17.1
+    rev: v1.19.1
     hooks:
       - id: mypy
+
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.21.2
+    hooks:
+    -   id: pyupgrade
 
