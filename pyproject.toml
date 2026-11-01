@@ -12,7 +12,7 @@ repository = "https://github.com/chagui/ninjavis"
 python = "^3.12"
 
 [tool.poetry.dev-dependencies]
-pylint = "^3.1"
+pylint = "^4.0"
 mypy = "^1.10"
 black = "^26.10"
 isort = "^5.13"
