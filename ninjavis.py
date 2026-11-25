@@ -6,7 +6,6 @@ import argparse
 import re
 import sys
 from os.path import getmtime
-from typing import List, Optional
 
 TIMELINE = """
 <!DOCTYPE HTML>
@@ -43,7 +42,7 @@ TIMELINE = """
 """
 
 
-def generate_build_profile(logfile: str, time_offset: int) -> List[dict]:
+def generate_build_profile(logfile: str, time_offset: int) -> list[dict]:
     """
     Parse a ninja build log file and generates a profile. A profile consist of the list of item
     part of the build.
@@ -53,7 +52,7 @@ def generate_build_profile(logfile: str, time_offset: int) -> List[dict]:
     :return: Profile of the build.
     """
 
-    def parse_build_entry(line: str) -> Optional[dict]:
+    def parse_build_entry(line: str) -> dict | None:
         try:
             # ignore comments
             if line[:1] != "#":
@@ -86,7 +85,7 @@ def generate_build_profile(logfile: str, time_offset: int) -> List[dict]:
         return profile
 
 
-def generate_timeline_from(profile: List[dict], output: str, title: str):
+def generate_timeline_from(profile: list[dict], output: str, title: str):
     """
     Generate a visjs timeline from the ninja build profile.
 
@@ -111,8 +110,7 @@ def get_argparser() -> argparse.ArgumentParser:
     """
     parser = argparse.ArgumentParser(
         prog="ninjavis",
-        description="Parse ninja build log file and "
-        "generates a timeline of the build",
+        description="Parse ninja build log file and generates a timeline of the build",
     )
     parser.add_argument("logfile", help="Ninja build log (.ninja_log)")
     parser.add_argument("output", help="Output file for the visualization")
